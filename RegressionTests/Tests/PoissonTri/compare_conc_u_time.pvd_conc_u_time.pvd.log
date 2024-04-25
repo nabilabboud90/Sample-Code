@@ -1,0 +1,8 @@
+FILE1: /Users/nabilabboud/Code/MultiphysicsCode/Code/RegressionTests/Tests/PoissonTri/results/uconc_u_time.pvd
+FILE2 /Users/nabilabboud/Code/MultiphysicsCode/Code/RegressionTests/Tests/PoissonTri/output/uconc_u_time.pvd
+
+******************************* START COMPARISON *******************************
+Field: u   Step: 0   Same: true
+Field: u   Step: 1   Same: true
+******************************* END COMPARISON ********************************
+RESULT: THE TWO FILES MATCH

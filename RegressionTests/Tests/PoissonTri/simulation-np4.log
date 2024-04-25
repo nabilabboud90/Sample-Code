@@ -1,0 +1,42 @@
+Starting to measure the duration of Total Simulation Time
+
+IOSS: Using decomposition method 'RIB' for 4 elements on 4 mpi ranks.
+************************************************************
+*******************  PRINTING MESH INFO ********************
+************************************************************
+Total number of vertices: 5
+Total number of edges: 8
+Total number of faces: 0
+Total number of elements: 4
+************************************************************
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      Nonlinear solver:      linear system          =      ls1
+                             iteration              =      0
+                             scaledResidualL2Norm   =      1
+                             residualInfNorm        =      16.6
+                             tolerance              =      1e-10
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		*******************************************************
+		***** Problem: Epetra::CrsMatrix
+		***** Preconditioned CG solution
+		***** No preconditioning
+		***** No scaling
+		*******************************************************
+
+                iter:    0           residual = 1.000000e+00
+                iter:    1           residual = 9.845544e-17
+
+
+		Solution time: 0.000082 (sec.)
+		total iterations: 1
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      Nonlinear solver:      linear system          =      ls1
+                             iteration              =      1
+                             scaledResidualL2Norm   =      2.14019e-16
+                             residualInfNorm        =      3.55271e-15
+                             tolerance              =      1e-10
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Total Simulation Time took 0.032844 seconds

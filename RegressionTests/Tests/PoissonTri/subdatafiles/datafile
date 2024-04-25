@@ -1,0 +1,152 @@
+[problem1]
+    [MESH]
+    	NAME = ./mesh/Box.exo
+	TYPE = STKMESH
+	
+	LIST = interior, left, right, top, bottom
+	[interior]
+	    ID = 1
+	    TYPE = INTERIOR
+	[../]
+	[left]
+	    ID = 5
+	    TYPE = BOUNDARY
+	[../]
+	[right]
+	    ID = 6
+	    TYPE = BOUNDARY
+	[../]
+	[top]
+	    ID = 7
+	    TYPE = BOUNDARY
+	[../]
+	[bottom]
+	    ID = 8
+	    TYPE = BOUNDARY
+	[../]
+    [../]
+
+    [FIELDS]
+	FUNCTIONSPACES = fs1
+	[fs1]
+            PARTS = interior
+	    FETYPE = P1TRICG
+	[../]
+	LIST = u, mu
+	[u]
+	    ORDER = VECTOR
+	    FUNCTIONSPACE = fs1
+	[../]
+	[mu]
+	    ORDER = SCALAR
+	    FUNCTIONSPACE = fs1
+	[../]
+    [../]
+
+    [FUNCTIONS]
+        LIST = fc1, fc3, fc4
+	[fc1]
+	    TYPE = PARSEDFUNCTION
+	    EXPRESSION = 83
+	[../]
+	[fc3]
+	    TYPE = PARSEDFUNCTION
+	    EXPRESSION = 0.0, 0.0
+	[../]
+	[fc4]
+	    TYPE = PARSEDFUNCTION
+	    EXPRESSION = 0.1
+	[../]
+    [../]
+
+    [PRESCRIBEDCONDITIONS]
+        LIST = bc1, bc2, ic1
+	[bc1]
+	    PARTS = left
+	    FIELD = u
+	    VALUES = fc3
+	[../]
+	[bc2]
+	    PARTS = right
+	    FIELD = u
+	    COMPONENTS = 0
+	    VALUES = fc4
+	[../]
+	[ic1]
+	    PARTS = interior
+	    FIELD = mu
+	    VALUES = fc1
+	[../]
+    [../]
+
+    [OUTPUTS]
+        LIST = output1
+	[output1]
+            TYPE = OUTPUTTOVTK
+            OUTPUTFIELDS = u
+	    [u]
+                STATES = NP1
+            [../]
+        [../]
+    [../]
+
+    [NONLINEARSOLVERS]
+	LIST = ns1
+	[ns1]
+	    TYPE = NEWTON
+	    RELATIVETOLERANCE = 1e-10
+	    ABSOLUTETOLERANCE = 1e-10
+	    MAXITERATIONS = 10
+	    ETAMAXIMUM = 1e-12
+	[../]
+    [../]
+
+    [EQUATIONS]
+	LIST = system1
+	[system1]
+	    TYPE = WEAKFORM
+            LIST = eqn1
+	    [eqn1]
+		EXPRESSION = (w,0)_{interior} = (\GRAD{w}, mu * \GRAD{u})_{interior}
+	    [../]
+	[../]
+    [../]
+
+    [LINEARSOLVERS]
+        LIST = solver1
+	[solver1]
+	    TOLERANCE = 1.0e-12
+	    MAXITERATIONS = 500
+	    TYPE = EPETRA
+	    METHOD = CG
+	[../]
+    [../]
+
+    [LINEARSYSTEMS]
+        LIST = ls1
+	[ls1]
+	    TYPE = EPETRA
+	    LINEARSOLVER = solver1
+	    REBUILDPRECONDITIONER = false
+	    PRECONDITIONER = AAS
+	[../]
+    [../]
+
+    [SOLUTION]
+	ALGORITHMS = alg1
+	[alg1]
+	    TYPE = FE
+	    TIMEDISCRETIZATION = QUASISTATIC
+	    NONLINEARSOLVER = ns1
+	    LINEARSYSTEM = ls1
+	    STRONGBCS = bc1, bc2
+	    ICS = ic1
+	    [EQUATIONSYSTEM]
+	    	NAME = system1
+	        UNKNOWNS = u
+	        TESTFUNCTIONS = w
+		INPUTS = mu
+	    [../]
+	[../]
+    [../]
+[../]

@@ -1,0 +1,8 @@
+FILE1: /Users/nabilabboud/Code/MultiphysicsCode/Code/RegressionTests/Tests/PoissonTri/results/COORDINATESconc_COORDINATES_time.pvd
+FILE2 /Users/nabilabboud/Code/MultiphysicsCode/Code/RegressionTests/Tests/PoissonTri/output/COORDINATESconc_COORDINATES_time.pvd
+
+******************************* START COMPARISON *******************************
+Field: COORDINATES   Step: 0   Same: true
+Field: COORDINATES   Step: 1   Same: true
+******************************* END COMPARISON ********************************
+RESULT: THE TWO FILES MATCH

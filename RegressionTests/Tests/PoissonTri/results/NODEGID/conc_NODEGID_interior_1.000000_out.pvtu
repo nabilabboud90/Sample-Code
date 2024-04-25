@@ -1,0 +1,11 @@
+<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian">
+<PUnstructuredGrid GhostLevel ="0" >
+<PPoints>
+ <PDataArray NumberOfComponents="3 " type="Float32" Name="points" format="ascii" />
+</PPoints>
+<PPointData Scalars="NODEGID"> 
+<PDataArray  type="Float32" Name="NODEGID" NumberOfComponents="1" />
+</PPointData>
+<Piece Source ="solution_output_NODEGID_interior_0_1.000000.vtu" /> 
+</PUnstructuredGrid>
+</VTKFile>
